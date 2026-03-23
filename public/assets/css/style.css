@@ -1,0 +1,688 @@
+/* yuken start */
+#dLabel {
+    width: 240px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: #fff;
+  border: solid 1px #cccccc;
+  text-align: left;
+  padding: 7.5px 15px;
+  color: #000;
+  letter-spacing: 0.7px;
+  margin-top: 25px;
+
+
+}
+
+ .caret {
+    float: right;
+    margin-top: 9px;
+	display: block;
+	/* display: inline-block; */
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid\9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+  }
+
+.dropdown-menu {
+  width: 240px;
+  padding: 0;
+  margin: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.dropdown button:hover, .dropdown button:focus {
+  border: none;
+  outline: 0;
+}
+
+.dropdown.open button#dLabel {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.23);
+  border: solid 1px #666;
+   border-bottom: none;
+}
+
+.dropdown.open ul {
+   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.23);
+  border: solid 1px #666;
+  border-top: none;
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.dropdown-menu li {
+
+     line-height: 1.5;
+  letter-spacing: 0.7px;
+  color: #666;
+    font-size: 14px;
+  cursor: pointer;
+  padding: 7.5px 15px;
+  border-top: solid 1px #f3f3f3;
+
+
+
+}
+
+.dropdown-menu li:hover {
+  background-color: #ccc;
+}
+
+
+/* end of yke */
+/*********************/
+
+.modal-content,
+.input-group-text,
+.btn,
+.form-control {
+	border-radius: 0;
+	border-width:.05rem
+}
+
+label {
+	margin:0
+}
+
+.modal-dialog {
+	max-width:auto
+}
+
+.table td, .table th {
+	padding:.3rem
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	margin:0
+}
+/**********************/
+
+.gc-spt,
+.gc-help,
+.gc-btn {
+	font-weight:600;
+	font-size:.9rem
+}
+
+.gc-shelp {
+    font-weight: 600;
+    color:#ececec;
+    font-size: .7rem;
+    margin-bottom: -.5rem;
+    display: block;
+}
+
+.gc-help-light {
+	color:#555;
+}
+
+.gc-st {
+	font-size:.9rem
+}
+
+.gc-inlist {
+	background:#ffd4d4;
+}
+
+.gc-addg:hover,
+.memebersearch .smnl:hover {
+	cursor:pointer
+}
+
+.wfr .mltr:hover,
+.memebersearch .smnl:hover {
+	background:#97DAFF;
+}
+
+.gc-rmt {
+	display:none
+}
+
+.gcmrb {
+	display:none
+}
+
+.gc-sc {
+	font-size:.6rem;
+	color:#BBB
+}
+
+.gc-alt {
+	text-decoration: underline;
+}
+
+.smnl,
+.wfr [data-gcid] {
+	border-bottom:solid .05rem #DDD
+}
+
+.gc-green-tick {
+	color:#31F900;
+	font-size: 1.5rem;
+}
+
+#findMembers {
+	outline:none
+}
+
+.fisthomesearch {
+	/*background-color:#007bff47;*/
+	background:#97daff;
+
+}
+.autocomplete-active {
+	background:#9FD3FF;
+}
+
+/* ***************** App CSS ***************** */
+
+@media only screen and (min-width: 600px) {
+    .form {
+        width: 50%;
+        text-align: left;
+        margin-left: 25%;
+
+
+    }
+
+    .form2 {
+        width: 50%;
+        text-align: left;
+        margin-left: 25%;
+        right: 38px;
+    }
+
+    .logo_img {
+        width: 50%;
+    }
+
+    .select_club {
+        width: 69%;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .form {
+        width: 54% !important;
+        text-align: left;
+        margin-left: 25%;
+    }
+
+    .form2 {
+        width: 52% !important;
+        text-align: left;
+        margin-left: 0%;
+
+    }
+
+    .input_clas {
+        /* margin-top: 15px !important; */
+    }
+}
+
+.bg-dark {
+    background-color: #002a71 !important;
+}
+
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (-webkit-min-device-pixel-ratio: 2) {
+    .form {
+        width: 81% !important;
+        text-align: left;
+        margin-left: 25%;
+    }
+
+    .form2 {
+        width: 80% !important;
+        text-align: left;
+        margin-left: 25%;
+
+    }
+
+    .input_clas {
+        margin-top: 15px !important;
+    }
+
+    th {
+        width: 21% !important;
+    }
+}
+
+
+.navbar-dark .navbar-toggler {
+    color: rgb(0, 42, 113);
+    border-color: rgb(253, 253, 253);
+}
+
+th {
+    width: 30%;
+}
+
+
+.navbar-dark .navbar-brand {
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+.navbar-nav .nav-item .nav-link {
+    font-family: 'Fira Sans', sans-serif !important;
+}
+
+@media (min-width: 576px) {
+    .labelname {
+
+        max-width: 100% !important;
+    }
+
+
+}
+
+@media only screen and (max-width: 600px) {
+    th {
+        width: 19% !important;
+    }
+
+    .th_class {
+        width: 49% !important;
+    }
+}
+
+body {
+    /* background-color: #D1D7DC; */
+    font-family: 'Fira Sans', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+code {
+    background-color: #9AA3AC;
+    padding: 0 8px;
+}
+
+.not_used_ticket {
+    height: 100px;
+    border: 1px solid;
+    padding: 11px;
+    margin-bottom: 7px;
+    cursor: pointer;
+}
+
+.guest-play .not_used_ticket {
+    height: auto;
+    border: 1px solid;
+    padding: 11px;
+    margin-bottom: 7px;
+    cursor: pointer;
+}
+
+.used_ticket {
+    height: 100px;
+    margin-bottom: 7px;
+    border: 1px solid;
+    cursor: not-allowed;
+    background-color: #98cae5d1 !important;
+    /* background-image: repeating-linear-gradient(45deg,#ffffff4f,#80808033 7%,#8080800a 05%); */
+    /*background-image: repeating-linear-gradient(45deg, #aacaff57, #2b6fe27a 7%, #808080 05%)*/
+}
+
+.guest-play .used_ticket {
+    height: auto;
+    margin-bottom: 7px;
+    border: 1px solid;
+    cursor: not-allowed;
+    background-color: #98cae5d1 !important;
+    /* background-image: repeating-linear-gradient(45deg,#ffffff4f,#80808033 7%,#8080800a 05%); */
+    /*background-image: repeating-linear-gradient(45deg, #aacaff57, #2b6fe27a 7%, #808080 05%)*/
+}
+
+.seasonal_ticket {
+    height: auto;
+    margin-bottom: 7px;
+    border: 1px solid;
+    cursor: unset;
+    background-color: transparent !important;
+}
+
+/*.used_ticket.buggy_ticket, .used_ticket.ferry_ticket {*/
+/*    background: transparent !important;*/
+/*    cursor: unset;*/
+/*}*/
+
+.ferry_ticket {
+    /*background: url('images/Ferge2021BtnBg.png') top center no-repeat;*/
+    background-size: initial;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+/*.green_free_ticket {*/
+/*    background: url('images/Greenfee-billett-2021BtnBg.png') top center no-repeat;*/
+/*    background-size: initial;*/
+/*}*/
+
+.pro_lessions_ticket {
+    background: url('images/Protime-billett-2021BtnBg.png') top center no-repeat;
+    background-size: initial;
+}
+
+.not_used_ticket.ferry_ticket, .not_used_ticket.green_free_ticket, .not_used_ticket.pro_lessions_ticket {
+    background-position: center;
+}
+
+.used_ticket.buggy_ticket,
+.not_used_ticket.buggy_ticket,
+.used_ticket.ferry_ticket,
+.not_used_ticket.ferry_ticket
+.seasonal_ticket.ferry_ticket {
+    height: auto;
+}
+
+.front-site-info {
+    /*text-align: center;
+    width: 100%;
+    color: #010537d6;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: emoji;
+    margin-bottom: 0px;*/
+    /*font-size: 15px;*/
+    color: #9a0427;
+    margin-top: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+    /*font-family: Arial, Helvetica, sans-serif;*/
+}
+
+/*p {*/
+/*    font-size: 15px;*/
+/*    font-family: 'Open Sans', sans-serif;*/
+/*}*/
+
+.handicap-info {
+    /*font-size: 15px;*/
+    color: #9a0427;
+    margin-top: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+}
+
+/* Radio button for manual online */
+
+.form22 {
+    padding: 0 16px;
+    max-width: 550px;
+    margin: 50px auto;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 36px;
+}
+
+.homeFrame .tournamentFrame {
+    height: 100rem;
+    margin-top: -42rem;
+}
+
+.homeFrame .tournamentFrame {
+    height: 55.1rem;
+    margin-top: -7.2rem;
+}
+
+.upStyle {
+    width: 100%;
+    height: 3rem;
+    border-color: #000;
+    background-color: #fff;
+    position: absolute;
+    z-index: 9999;
+    margin-top: 0rem;
+    margin-left: -15px;
+}
+
+@media (max-width: 350px) {
+    .homeFrame .tournamentFrame {
+        height: 47.1rem;
+        margin-top: 10rem !important;
+    }
+
+    .upStyle {
+        height: 22rem;
+    }
+}
+
+@media only screen and (max-width: 450px) and (min-width: 350px) {
+    .homeFrame .tournamentFrame {
+        height: 43.1rem;
+        margin-top: 9.8rem !important;
+    }
+
+    .upStyle {
+        height: 22rem;
+    }
+}
+
+@media only screen and (max-width: 550px) and (min-width: 450px) {
+    .homeFrame .tournamentFrame {
+        height: 37.1rem;
+        margin-top: 10rem !important;
+    }
+
+    .upStyle {
+        height: 22rem;
+    }
+}
+
+@media only screen and (max-width: 678px) and (min-width: 550px) {
+    .homeFrame .tournamentFrame {
+        height: 40.1rem;
+        margin-top: 9rem !important;
+    }
+
+    .upStyle {
+        height: 21rem;
+    }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 678px) {
+    .homeFrame .tournamentFrame {
+        height: 40.1rem;
+        margin-top: 9.5rem !important;
+    }
+
+    .upStyle {
+        height: 21rem;
+    }
+}
+
+@media only screen and (max-width: 992px) and (min-width: 768px) {
+    .homeFrame .tournamentFrame {
+        height: 30rem !important;
+        margin-top: 8.8rem;
+    }
+
+    .upStyle {
+        height: 21rem;
+    }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 992px) {
+    .homeFrame .tournamentFrame {
+        margin-top: 6rem !important;
+        height: 43.1rem;
+    }
+    .upStyle {
+        height: 21rem;
+    }
+}
+@media (min-width: 1200px) {
+    .homeFrame .tournamentFrame {
+        margin-top: 4.9rem !important;
+        height: 35.1rem;
+    }
+    .upStyle {
+        height: 20rem;
+    }
+}
+
+
+/* Terminaliste */
+/*#terminaliste .tournamentFrame {*/
+/*    height: 100rem;*/
+/*    margin-top: -42rem;*/
+/*}*/
+/*#terminaliste .tournamentFrame {*/
+/*    height: 55.1rem;*/
+/*    margin-top: -7.2rem;*/
+/*}*/
+/*#terminaliste #hideDiv {*/
+/*    width: 100%;*/
+/*    height: 3rem;*/
+/*    border-color: #000;*/
+/*    background-color: #fff;*/
+/*    position: absolute;*/
+/*    z-index: 9999;*/
+/*    margin-top: 0rem;*/
+/*    margin-left: -15px;*/
+/*}*/
+/*@media (max-width: 380px) {*/
+/*    #terminaliste .tournamentFrame {*/
+/*        margin-top: -4.0rem !important;*/
+/*    }*/
+/*    #terminaliste #hideDiv {*/
+/*        height: 9rem;*/
+/*    }*/
+/*    #terminaliste #tournamentFrameTwo {*/
+/*        height: 48rem !important;*/
+/*        margin-top: -18.0rem !important;*/
+/*    }*/
+/*}*/
+/*@media only screen and (max-width: 450px) and (min-width: 381px) {*/
+/*    #terminaliste .tournamentFrame {*/
+/*        margin-top: -4.0rem !important;*/
+/*    }*/
+/*    #terminaliste #hideDiv {*/
+/*        height: 8rem;*/
+/*    }*/
+/*    #terminaliste #tournamentFrameTwo {*/
+/*        height: 45rem !important;*/
+/*        margin-top: -15.2rem !important;*/
+/*    }*/
+/*}*/
+/*@media only screen and (max-width: 550px) and (min-width: 451px) {*/
+/*    #terminaliste .tournamentFrame {*/
+/*        margin-top: -4.0rem !important;*/
+/*    }*/
+/*    #terminaliste #hideDiv {*/
+/*        height: 8rem;*/
+/*    }*/
+/*    #terminaliste #tournamentFrameTwo {*/
+/*        height: 42rem !important;*/
+/*        margin-top: -12.0rem !important;*/
+/*    }*/
+/*}*/
+/*@media only screen and (max-width: 678px) and (min-width: 550px) {*/
+/*    !*.tournamentFrame {*/
+/*        margin-top: -26rem !important;*/
+/*    }*/
+/*    #hideDiv {*/
+/*        height: 8rem;*/
+/*    }*!*/
+/*    #terminaliste .tournamentFrame {*/
+/*        margin-top: -4.0rem !important;*/
+/*    }*/
+/*    #terminaliste #hideDiv {*/
+/*        height: 8rem;*/
+/*    }*/
+/*    #terminaliste #tournamentFrameTwo {*/
+/*        height: 40rem !important;*/
+/*        margin-top: -11.0rem !important;*/
+/*    }*/
+/*}*/
+/*@media only screen and (max-width: 768px) and (min-width: 678px)  {*/
+/*    #terminaliste .tournamentFrame {*/
+/*        margin-top: -4.0rem !important;*/
+/*    }*/
+/*    #terminaliste #hideDiv {*/
+/*        height: 8rem;*/
+/*    }*/
+/*    #terminaliste #tournamentFrameTwo {*/
+/*        height: 40rem !important;*/
+/*        margin-top: -11.0rem !important;*/
+/*    }*/
+/*}*/
+/*@media only screen and (max-width: 992px) and (min-width: 769px)  {*/
+/*    #terminaliste .tournamentFrame {*/
+/*        margin-top: -4.0rem !important;*/
+/*    }*/
+/*    #terminaliste #hideDiv {*/
+/*        height: 8rem;*/
+/*    }*/
+/*    #terminaliste #tournamentFrameTwo {*/
+/*        height: 40rem !important;*/
+/*        margin-top: -11.0rem !important;*/
+/*    }*/
+/*}*/
+/*@media only screen and (max-width: 1200px) and (min-width: 992px)  {*/
+/*    #terminaliste .tournamentFrame {*/
+/*        margin-top: -6.0rem !important;*/
+/*    }*/
+/*    #terminaliste #hideDiv {*/
+/*        height: 8rem;*/
+/*    }*/
+/*    #terminaliste #tournamentFrameTwo {*/
+/*        height: 47rem !important;*/
+/*    }*/
+/*}*/
+/*@media (min-width: 1200px) {*/
+/*    #terminaliste .tournamentFrame {*/
+/*        margin-top: -5.1rem !important;*/
+/*    }*/
+/*    #terminaliste #hideDiv {*/
+/*        height: 8rem;*/
+/*    }*/
+/*    #terminaliste #tournamentFrameTwo {*/
+/*        height: 48rem !important;*/
+/*    }*/
+/*}*/
+/*.navbar {*/
+/*    z-index: 1;*/
+/*}*/
+/*@media (max-width: 300px) {
+    .right-card {
+        height: 9.5rem;
+    }
+}
+@media only screen and (max-width: 360px) and (min-width: 301px) {
+    .right-card {
+        height: 8.4rem;
+    }
+}
+@media only screen and (max-width: 460px) and (min-width: 361px) {
+    .right-card {
+        height: 5.5rem;
+    }
+}
+@media only screen and (max-width: 550px) and (min-width: 461px) {
+    .right-card {
+        height: 5.5rem;
+    }
+}*/

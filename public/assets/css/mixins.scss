@@ -1,0 +1,18 @@
+
+@mixin mediaQuery($type, $min, $max) {
+    @if($type == 'min') {
+        @media (min-width: $min) {
+            @content;
+        }
+    }
+    @if($type == 'max') {
+        @media (max-width: $max) {
+            @content;
+        }
+    }
+    @if($type == '') {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    }
+}
