@@ -10,7 +10,9 @@
             ],
         ],
 
-        'users_id' => [
+        'secureivs_client_id' => env('SECUREIVS_CLIENT_ID'),
+
+    'users_id' => [
             '1' => [
                 'id' => 1,
                 'name' => 'Torkel',
