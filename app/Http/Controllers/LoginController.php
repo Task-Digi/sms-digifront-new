@@ -36,7 +36,7 @@ class LoginController extends Controller
     public function callback(Request $request)
     {
         $referer = $request->headers->get('referer', '');
-        if (!str_contains($referer, 'secureivs.eu')) {
+        if (!app()->environment('local') && !str_contains($referer, 'secureivs.eu')) {
             return redirect()->route('admin.login')->with('error', 'Invalid request origin.');
         }
 

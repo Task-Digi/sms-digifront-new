@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-SMS sending web application built on Laravel 5.8 with OTP-based authentication. Two hardcoded users can send SMS via an external gateway and view their sending history.
+SMS sending web application built on Laravel 11 with OTP-based authentication. Two hardcoded users can send SMS via an external gateway and view their sending history.
 
 ## Commands
 
@@ -12,6 +12,10 @@ SMS sending web application built on Laravel 5.8 with OTP-based authentication. 
 ```bash
 # Install PHP dependencies
 composer install
+
+# Set up environment file
+cp .env.example .env
+php artisan key:generate
 
 # Run database migrations
 php artisan migrate
