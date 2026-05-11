@@ -31,6 +31,9 @@ class SmsSendForm extends Component
     {
         $user = session('user');
         $this->subject = $user['sender_id'] ?? '';
+
+        $this->mobile  = (string) request()->query('mobile', '');
+        $this->message = (string) request()->query('message', '');
     }
 
     public function send(SmsService $smsService): void

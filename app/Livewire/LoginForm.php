@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
 use App\Services\SmsService;
 use Livewire\Component;
 use Illuminate\Support\Facades\RateLimiter;
@@ -20,9 +21,9 @@ class LoginForm extends Component
             return;
         }
 
-        $users = config('settings.users');
+        $exists = User::where('mobile', $this->mobile)->where('is_active', true)->exists();
 
-        if (!isset($users[$this->mobile])) {
+        if (!$exists) {
             $this->error = 'Mobile number not found.';
             return;
         }

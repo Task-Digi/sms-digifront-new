@@ -17,7 +17,7 @@
                     <td>{{ $track->mobile_no }}</td>
                     <td><span class="badge badge-primary">{{ $track->sender_id }}</span></td>
                     <td>{{ $track->message }}</td>
-                    <td>{{ config('settings.users_id')[$track->user_id]['name'] ?? '—' }}</td>
+                    <td>{{ $users[$track->user_id] ?? '—' }}</td>
                     <td>{{ \Carbon\Carbon::parse($track->created_at)->format('Y-m-d H:i') }}</td>
                 </tr>
             @empty

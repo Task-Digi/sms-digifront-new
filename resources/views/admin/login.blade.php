@@ -13,8 +13,11 @@
             @if(session('error'))
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
-            <a href="{{ route('auth.redirect') }}" class="btn btn-primary btn-block">
-                <i class="fas fa-sign-in-alt mr-2"></i> Login with SecureIVS
+            <a href="{{ route('auth.redirect', ['method' => 'email']) }}" class="btn btn-primary btn-block">
+                <i class="fas fa-envelope mr-2"></i> Login via SecureIVS Email
+            </a>
+            <a href="{{ route('auth.redirect', ['method' => 'sms']) }}" class="btn btn-primary btn-block">
+                <i class="fas fa-mobile-alt mr-2"></i> Login via SecureIVS Mobile
             </a>
         </div>
     </div>

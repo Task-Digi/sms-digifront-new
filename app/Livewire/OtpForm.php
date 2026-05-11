@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\RateLimiter;
 
@@ -44,9 +45,9 @@ class OtpForm extends Component
 
         $enteredCode = $this->code1 . $this->code2 . $this->code3 . $this->code4;
         $storedOtp   = session('otp');
-        $users       = config('settings.users');
+        $user = User::where('mobile', $mobile)->where('is_active', true)->first();
 
-        if (!isset($users[$mobile])) {
+        if (!$user) {
             session()->flush();
             $this->redirect(route('admin.login'), navigate: false);
             return;
@@ -55,11 +56,16 @@ class OtpForm extends Component
         if ($enteredCode === $storedOtp) {
             // Clear rate limiter and OTP data on success
             RateLimiter::clear($throttleKey);
-            $user = $users[$mobile];
             session()->forget(['otp', 'otp_expires_at', 'otp_attempts']);
             session()->put('login_status', true);
-            session()->put('user', $user);
-            $this->redirect(route('home'), navigate: false);
+            session()->put('user', [
+                'id'        => $user->id,
+                'name'      => $user->name,
+                'mobile'    => $user->mobile,
+                'sender_id' => $user->sender_id,
+                'is_admin'  => (bool) $user->is_admin,
+            ]);
+            $this->redirect(route($user->is_admin ? 'statistics' : 'home'), navigate: false);
         } else {
             RateLimiter::hit($throttleKey, 900); // 15 min lockout window
             $remaining = 5 - RateLimiter::attempts($throttleKey);

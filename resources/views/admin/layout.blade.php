@@ -41,8 +41,12 @@
     </nav>
 
     {{-- Sidebar --}}
+    @php
+        $isAdmin   = (bool) (session('user')['is_admin'] ?? false);
+        $brandHref = $isAdmin ? route('statistics') : route('home');
+    @endphp
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <a href="{{ route('home') }}" class="brand-link text-center">
+        <a href="{{ $brandHref }}" class="brand-link text-center">
             <span class="brand-text font-weight-bold">
                 <i class="fas fa-sms mr-1"></i> SMS Portal
             </span>
@@ -54,23 +58,45 @@
                     <i class="fas fa-user-circle fa-2x text-white ml-1 mt-1"></i>
                 </div>
                 <div class="info">
-                    <span class="d-block text-white">{{ session('user')['name'] ?? '' }}</span>
+                    <span class="d-block text-white">
+                        {{ session('user')['name'] ?? '' }}
+                        @if ($isAdmin)
+                            <span class="badge badge-danger ml-1">Admin</span>
+                        @endif
+                    </span>
                     <small class="text-muted">{{ session('user')['sender_id'] ?? '' }}</small>
                 </div>
             </div>
 
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
-                    <li class="nav-item">
-                        <a href="{{ route('home') }}"
-                           class="nav-link {{ request()->is('home') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-paper-plane"></i>
-                            <p>Send SMS</p>
-                        </a>
-                    </li>
+                    @if ($isAdmin)
+                        <li class="nav-item">
+                            <a href="{{ route('statistics') }}"
+                               class="nav-link {{ request()->is('*statistics*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-chart-bar"></i>
+                                <p>Statistics</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('users.index') }}"
+                               class="nav-link {{ request()->is('*users*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>Users</p>
+                            </a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}"
+                               class="nav-link {{ request()->is('*home*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-paper-plane"></i>
+                                <p>Send SMS</p>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a href="{{ route('get.tracking') }}"
-                           class="nav-link {{ request()->is('tracking') ? 'active' : '' }}">
+                           class="nav-link {{ request()->is('*tracking*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-list-alt"></i>
                             <p>Tracking</p>
                         </a>

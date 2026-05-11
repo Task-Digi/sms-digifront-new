@@ -10,7 +10,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'otp' => \App\Http\Middleware\OtpAuthentication::class,
+            'otp'     => \App\Http\Middleware\OtpAuthentication::class,
+            'admin'   => \App\Http\Middleware\IsAdmin::class,
+            'regular' => \App\Http\Middleware\IsRegularUser::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
