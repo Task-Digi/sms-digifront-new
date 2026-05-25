@@ -40,13 +40,21 @@
                             <input type="text" class="form-control @error('sender_id') is-invalid @enderror" wire:model.defer="sender_id">
                             @error('sender_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
-                        <div class="form-group col-md-2 d-flex align-items-end">
+                        <div class="form-group col-md-2">
+                            <label>Monthly Limit
+                                <i class="fas fa-info-circle text-muted" title="Max SMS segments per month. Leave blank for unlimited. 0 blocks all sending."></i>
+                            </label>
+                            <input type="number" min="0" class="form-control @error('monthly_sms_limit') is-invalid @enderror"
+                                   wire:model.defer="monthly_sms_limit" placeholder="Unlimited">
+                            @error('monthly_sms_limit') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        </div>
+                        <div class="form-group col-md-1 d-flex align-items-end">
                             <div class="custom-control custom-switch mb-2">
                                 <input type="checkbox" class="custom-control-input" id="is_active" wire:model.defer="is_active">
                                 <label class="custom-control-label" for="is_active">Active</label>
                             </div>
                         </div>
-                        <div class="form-group col-md-2 d-flex align-items-end">
+                        <div class="form-group col-md-1 d-flex align-items-end">
                             <div class="custom-control custom-switch mb-2">
                                 <input type="checkbox" class="custom-control-input" id="is_admin" wire:model.defer="is_admin">
                                 <label class="custom-control-label" for="is_admin">Admin</label>
@@ -73,6 +81,7 @@
                 <th><i class="fas fa-id-badge mr-1"></i> Sender ID</th>
                 <th>Role</th>
                 <th>Status</th>
+                <th>Monthly Usage</th>
                 <th class="text-right">Actions</th>
             </tr>
         </thead>
@@ -97,6 +106,17 @@
                             <span class="badge badge-secondary">Inactive</span>
                         @endif
                     </td>
+                    <td>
+                        @php($used = $user->smsUsageThisMonth())
+                        @if ($user->monthly_sms_limit === null)
+                            <span class="badge badge-light">{{ $used }} / &infin;</span>
+                        @else
+                            @php($pct = $user->monthly_sms_limit > 0 ? ($used / $user->monthly_sms_limit) : 1)
+                            <span class="badge {{ $pct >= 1 ? 'badge-danger' : ($pct >= 0.8 ? 'badge-warning' : 'badge-info') }}">
+                                {{ $used }} / {{ $user->monthly_sms_limit }}
+                            </span>
+                        @endif
+                    </td>
                     <td class="text-right">
                         <button class="btn btn-sm btn-outline-primary" wire:click="edit({{ $user->id }})">
                             <i class="fas fa-edit"></i>
@@ -110,7 +130,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="7" class="text-center text-muted py-4">
+                    <td colspan="8" class="text-center text-muted py-4">
                         <i class="fas fa-user-slash fa-2x mb-2 d-block"></i> No users yet.
                     </td>
                 </tr>

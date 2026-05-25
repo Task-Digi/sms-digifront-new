@@ -14,10 +14,10 @@
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
             <a href="{{ route('auth.redirect', ['method' => 'email']) }}" class="btn btn-primary btn-block">
-                <i class="fas fa-envelope mr-2"></i> Login via SecureIVS Email
+                <i class="fas fa-envelope mr-2"></i> Login via Email
             </a>
             <a href="{{ route('auth.redirect', ['method' => 'sms']) }}" class="btn btn-primary btn-block">
-                <i class="fas fa-mobile-alt mr-2"></i> Login via SecureIVS Mobile
+                <i class="fas fa-mobile-alt mr-2"></i> Login via Mobile
             </a>
         </div>
     </div>

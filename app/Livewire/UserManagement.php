@@ -19,16 +19,18 @@ class UserManagement extends Component
     public string $sender_id = '';
     public bool $is_active = true;
     public bool $is_admin = false;
+    public ?string $monthly_sms_limit = null;
     public bool $showForm = false;
 
     protected function rules(): array
     {
         return [
-            'name'      => 'required|string|max:100',
-            'mobile'    => ['required', 'string', 'max:20', Rule::unique('users', 'mobile')->ignore($this->editingId)],
-            'sender_id' => 'required|string|max:20',
-            'is_active' => 'boolean',
-            'is_admin'  => 'boolean',
+            'name'              => 'required|string|max:100',
+            'mobile'            => ['required', 'string', 'max:20', Rule::unique('users', 'mobile')->ignore($this->editingId)],
+            'sender_id'         => 'required|string|max:20',
+            'is_active'         => 'boolean',
+            'is_admin'          => 'boolean',
+            'monthly_sms_limit' => 'nullable|integer|min:0|max:1000000',
         ];
     }
 
@@ -41,18 +43,20 @@ class UserManagement extends Component
     public function edit(int $id): void
     {
         $user = User::findOrFail($id);
-        $this->editingId = $user->id;
-        $this->name      = $user->name;
-        $this->mobile    = $user->mobile;
-        $this->sender_id = $user->sender_id;
-        $this->is_active = (bool) $user->is_active;
-        $this->is_admin  = (bool) $user->is_admin;
-        $this->showForm  = true;
+        $this->editingId         = $user->id;
+        $this->name              = $user->name;
+        $this->mobile            = $user->mobile;
+        $this->sender_id         = $user->sender_id;
+        $this->is_active         = (bool) $user->is_active;
+        $this->is_admin          = (bool) $user->is_admin;
+        $this->monthly_sms_limit = $user->monthly_sms_limit === null ? null : (string) $user->monthly_sms_limit;
+        $this->showForm          = true;
     }
 
     public function save(): void
     {
         $data = $this->validate();
+        $data['monthly_sms_limit'] = ($data['monthly_sms_limit'] ?? '') === '' ? null : (int) $data['monthly_sms_limit'];
 
         // Prevent the signed-in admin from demoting themselves and getting locked out.
         $sessionUserId = (int) (session('user')['id'] ?? 0);
@@ -90,7 +94,7 @@ class UserManagement extends Component
 
     private function resetForm(): void
     {
-        $this->reset(['editingId', 'name', 'mobile', 'sender_id', 'is_admin', 'showForm']);
+        $this->reset(['editingId', 'name', 'mobile', 'sender_id', 'is_admin', 'monthly_sms_limit', 'showForm']);
         $this->is_active = true;
         $this->resetErrorBag();
     }

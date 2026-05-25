@@ -19,12 +19,7 @@ class SmsTracking extends Component
         $query = SmsLog::latest();
 
         if (!($sessionUser['is_admin'] ?? false)) {
-            $senderId = $sessionUser['sender_id'] ?? null;
-            if ($senderId) {
-                $query->where('sender_id', $senderId);
-            } else {
-                $query->where('user_id', $sessionUser['id'] ?? 0);
-            }
+            $query->where('user_id', $sessionUser['id'] ?? 0);
         }
 
         $tracking = $query->paginate(50);

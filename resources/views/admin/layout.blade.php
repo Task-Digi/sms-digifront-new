@@ -85,6 +85,13 @@
                                 <p>Users</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('templates.index') }}"
+                               class="nav-link {{ request()->is('*templates*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p>Templates</p>
+                            </a>
+                        </li>
                     @else
                         <li class="nav-item">
                             <a href="{{ route('home') }}"

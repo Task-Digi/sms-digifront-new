@@ -1,5 +1,13 @@
 <div>
-    <div class="row">
+    <style>
+        .stat-mini .small-box { margin-bottom: 0.75rem; border-radius: 6px; }
+        .stat-mini .small-box .inner { padding: 8px 12px; }
+        .stat-mini .small-box .inner h3 { font-size: 1.4rem; margin: 0; line-height: 1.1; font-weight: 600; }
+        .stat-mini .small-box .inner p { font-size: 0.8rem; margin: 0; line-height: 1.2; }
+        .stat-mini .small-box .icon { top: 50%; right: 10px; transform: translateY(-50%); font-size: 30px; opacity: 0.35; }
+        .stat-mini .small-box .icon > i { font-size: 30px; }
+    </style>
+    <div class="row stat-mini">
         <div class="col-md-3 col-sm-6">
             <div class="small-box bg-info">
                 <div class="inner">
@@ -40,19 +48,19 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="card card-primary card-outline">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-chart-bar mr-1"></i> SMS sent &mdash; last 30 days</h3>
+            <div class="card card-primary card-outline mb-3">
+                <div class="card-header py-2">
+                    <h3 class="card-title" style="font-size:0.95rem;"><i class="fas fa-chart-bar mr-1"></i> SMS sent &mdash; last 30 days</h3>
                 </div>
-                <div class="card-body">
-                    <div style="display:flex; align-items:flex-end; gap:4px; height:180px; padding-bottom:8px; border-bottom:1px solid #ddd;">
+                <div class="card-body py-2">
+                    <div style="display:flex; align-items:flex-end; gap:3px; height:70px; padding-bottom:4px; border-bottom:1px solid #ddd;">
                         @foreach ($daily as $day => $count)
                             <div title="{{ $day }}: {{ $count }} SMS"
-                                 style="flex:1; min-width:8px; background:{{ $count > 0 ? '#007bff' : '#e9ecef' }}; height:{{ $count > 0 ? max(2, round($count / $maxDaily * 100)) : 2 }}%; border-radius:2px 2px 0 0;">
+                                 style="flex:1; min-width:6px; background:{{ $count > 0 ? '#007bff' : '#e9ecef' }}; height:{{ $count > 0 ? max(4, round($count / $maxDaily * 100)) : 4 }}%; border-radius:2px 2px 0 0;">
                             </div>
                         @endforeach
                     </div>
-                    <div style="display:flex; justify-content:space-between; font-size:11px; color:#888; margin-top:6px;">
+                    <div style="display:flex; justify-content:space-between; font-size:10px; color:#888; margin-top:4px;">
                         <span>{{ $daily->keys()->first() }}</span>
                         <span>Today</span>
                     </div>

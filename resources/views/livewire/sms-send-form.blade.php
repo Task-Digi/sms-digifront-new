@@ -23,6 +23,16 @@
         @endforeach
     @endif
 
+    @php($quota = $this->quotaStatus)
+    @if($quota['limit'] !== null)
+        @php($pct = $quota['limit'] > 0 ? ($quota['used'] / $quota['limit']) : 1)
+        <div class="alert {{ $pct >= 1 ? 'alert-danger' : ($pct >= 0.8 ? 'alert-warning' : 'alert-info') }} py-2 mb-3">
+            <i class="fas fa-tachometer-alt mr-1"></i>
+            Monthly quota: <strong>{{ $quota['used'] }}</strong> / {{ $quota['limit'] }} segments used
+            ({{ $quota['remaining'] }} remaining)
+        </div>
+    @endif
+
     {{-- Tabs --}}
     <ul class="nav nav-tabs mb-4">
         <li class="nav-item">
@@ -42,25 +52,50 @@
     {{-- Single Send --}}
     @if($tab === 'single')
         <form wire:submit="send">
-            <div class="form-group">
-                <label><i class="fas fa-mobile-alt mr-1"></i> Mobile Number</label>
-                <input type="text" wire:model="mobile" inputmode="numeric"
-                       class="form-control @error('mobile') is-invalid @enderror"
-                       autocomplete="off" placeholder="e.g. 48123456">
-                @error('mobile') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            <div class="form-row">
+                <div class="form-group col-sm-5">
+                    <label><i class="fas fa-mobile-alt mr-1"></i> Mobile Number</label>
+                    <input type="text" wire:model="mobile" inputmode="numeric"
+                           class="form-control @error('mobile') is-invalid @enderror"
+                           autocomplete="off" placeholder="e.g. 48123456">
+                    @error('mobile') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <div class="form-group col-sm-7">
+                    <label>
+                        <i class="fas fa-id-badge mr-1"></i> Sender Id
+                        @if(!$isAdmin)
+                            <i class="fas fa-lock text-muted ml-1" title="Locked — set via your account or a template"></i>
+                        @endif
+                    </label>
+                    <input type="text" wire:model="subject"
+                           class="form-control @error('subject') is-invalid @enderror"
+                           @if(!$isAdmin) readonly @endif>
+                    @error('subject') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
             </div>
 
-            <div class="form-group">
-                <label><i class="fas fa-id-badge mr-1"></i> Sender Id</label>
-                <input type="text" wire:model="subject"
-                       class="form-control @error('subject') is-invalid @enderror">
-                @error('subject') <div class="invalid-feedback">{{ $message }}</div> @enderror
-            </div>
+            @if($templates->isNotEmpty())
+                <div class="form-group">
+                    <label><i class="fas fa-clipboard-list mr-1"></i> Template
+                        <small class="text-muted">(optional — appends to message)</small>
+                    </label>
+                    <select wire:model.live="selectedTemplateId" class="form-control">
+                        <option value="">-- Choose a template --</option>
+                        @foreach($templates as $tpl)
+                            <option value="{{ $tpl->id }}">
+                                {{ $tpl->name }}@if(!$tpl->sender_id) (shared)@endif
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            @endif
 
             <div class="form-group">
                 <label><i class="fas fa-comment mr-1"></i> Message</label>
-                <textarea wire:model="message" rows="4"
+                <textarea wire:model="message" rows="8"
                           class="form-control @error('message') is-invalid @enderror"
+                          style="resize: vertical; min-height: 80px;"
                           placeholder="Type your message here…"></textarea>
                 @error('message') <div class="invalid-feedback">{{ $message }}</div> @enderror
             </div>
@@ -80,9 +115,15 @@
     @if($tab === 'bulk')
         <form wire:submit="sendBulk">
             <div class="form-group">
-                <label><i class="fas fa-id-badge mr-1"></i> Sender Id</label>
+                <label>
+                    <i class="fas fa-id-badge mr-1"></i> Sender Id
+                    @if(!$isAdmin)
+                        <i class="fas fa-lock text-muted ml-1" title="Locked — set via your account or a template"></i>
+                    @endif
+                </label>
                 <input type="text" wire:model="subject"
-                       class="form-control @error('subject') is-invalid @enderror">
+                       class="form-control @error('subject') is-invalid @enderror"
+                       @if(!$isAdmin) readonly @endif>
                 @error('subject') <div class="invalid-feedback">{{ $message }}</div> @enderror
             </div>
 
@@ -114,10 +155,27 @@
                 </div>
             </div>
 
+            @if($templates->isNotEmpty())
+                <div class="form-group">
+                    <label><i class="fas fa-clipboard-list mr-1"></i> Template
+                        <small class="text-muted">(optional — appends to message)</small>
+                    </label>
+                    <select wire:model.live="selectedTemplateId" class="form-control">
+                        <option value="">-- Choose a template --</option>
+                        @foreach($templates as $tpl)
+                            <option value="{{ $tpl->id }}">
+                                {{ $tpl->name }}@if(!$tpl->sender_id) (shared)@endif
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            @endif
+
             <div class="form-group">
                 <label><i class="fas fa-comment mr-1"></i> Message</label>
-                <textarea wire:model="message" rows="4"
+                <textarea wire:model="message" rows="8"
                           class="form-control @error('message') is-invalid @enderror"
+                          style="resize: vertical; min-height: 80px;"
                           placeholder="Type your message here…"></textarea>
                 @error('message') <div class="invalid-feedback">{{ $message }}</div> @enderror
             </div>
@@ -186,4 +244,5 @@
             </div>
         @endif
     @endif
+
 </div>

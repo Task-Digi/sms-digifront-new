@@ -125,6 +125,7 @@ Route::prefix('sms')->group(function () {
         // Admin only
         Route::middleware('admin')->group(function () {
             Route::get('/users', fn() => view('admin.users.index'))->name('users.index');
+            Route::get('/templates', fn() => view('admin.templates.index'))->name('templates.index');
             Route::get('/statistics', fn() => view('admin.statistics'))->name('statistics');
         });
     });
